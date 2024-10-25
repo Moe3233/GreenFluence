@@ -1,0 +1,174 @@
+public void downloadFromDB(String userId) {
+        // Reference to the specific user node in the database
+        DatabaseReference userRef = dbRef.child("users").child(userId);
+
+        // Add a listener to read the data at this reference
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Check if the user exists
+                if (dataSnapshot.exists()) {
+                    // Retrieve values from the DataSnapshot
+                    String studentName = dataSnapshot.child("Student Name: ").getValue(String.class);
+                    String major = dataSnapshot.child("Major: ").getValue(String.class);
+
+                    Toast.makeText(getActivity(), "User name: "+studentName, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "User major: "+major, Toast.LENGTH_SHORT).show();
+
+                    int energyScore = dataSnapshot.child("Energy Score: ").getValue(Integer.class);
+                    int plantScore = dataSnapshot.child("Plant Score: ").getValue(Integer.class);
+                    int coScore = dataSnapshot.child("Co Score: ").getValue(Integer.class);
+                    int financeScore = dataSnapshot.child("Finance Score: ").getValue(Integer.class);
+
+                    // Use the retrieved values (e.g., update UI)
+                    // For example:
+                    nameStudent.setText(studentName); // Assuming you have a TextView for the student name
+                    nameMajor.setText(major); // Assuming you have a TextView for the major
+                    nameID.setText(userId);
+                    // Handle energyScore using switch case
+                    switch (energyScore) {
+                        case 1:
+                            ener1.setImageResource((R.drawable.energyon));
+                            break;
+                        case 2:
+                            ener1.setImageResource((R.drawable.energyon));
+                            ener2.setImageResource((R.drawable.energyon));
+                            break;
+                        case 3:
+                            ener1.setImageResource((R.drawable.energyon));
+                            ener2.setImageResource((R.drawable.energyon));
+                            ener3.setImageResource((R.drawable.energyon));
+                            break;
+                        default:
+                            break;
+                    }
+                    switch (plantScore) {
+                        case 1:
+                            tree1.setImageResource((R.drawable.treeon));
+                            break;
+                        case 2:
+                            tree1.setImageResource((R.drawable.treeon));
+                            tree2.setImageResource((R.drawable.treeon));
+                            break;
+                        case 3:
+                            tree1.setImageResource((R.drawable.treeon));
+                            tree2.setImageResource((R.drawable.treeon));
+                            tree3.setImageResource((R.drawable.treeon));
+                            break;
+                        default:
+                            break;
+                    }
+                    switch (coScore) {
+                        case 1:
+                            cO1.setImageResource((R.drawable.cloudon));
+                            break;
+                        case 2:
+                            cO1.setImageResource((R.drawable.cloudon));
+                            cO2.setImageResource((R.drawable.cloudon));
+                            break;
+                        case 3:
+                            cO1.setImageResource((R.drawable.cloudon));
+                            cO2.setImageResource((R.drawable.cloudon));
+                            cO3.setImageResource((R.drawable.cloudon));
+                            break;
+                        default:
+                            break;
+                    }
+
+                    switch (financeScore) {
+                        case 1:
+                            cash1.setImageResource((R.drawable.moneyon));
+                            break;
+                        case 2:
+                            cash1.setImageResource((R.drawable.moneyon));
+                            cash2.setImageResource((R.drawable.moneyon));
+                            break;
+                        case 3:
+                            cash1.setImageResource((R.drawable.moneyon));
+                            cash2.setImageResource((R.drawable.moneyon));
+                            cash3.setImageResource((R.drawable.moneyon));
+                            break;
+                        default:
+                            break;
+                    }
+
+                } else {
+                    // Handle the case when the user does not exist
+                    Toast.makeText(getActivity(), "User not found", Toast.LENGTH_SHORT).show();
+                    showUserIdInputDialog();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle possible errors (e.g., permission issues)
+                Toast.makeText(getActivity(), "Error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+
+    public void uploadToDB(View view){
+            // Assuming nameID is a unique identifier (e.g., user ID) and you want nameMajor as a child under it.
+            // Create a unique ID for the user
+            String userId = nameID.getText().toString();
+
+            // Prepare a map to hold the values
+            Map<String, Object> userUpdates = new HashMap<>();
+            userUpdates.put("Student Name: ", nameStudent.getText().toString());
+            userUpdates.put("Major: ", nameMajor.getText().toString());
+            userUpdates.put("Email ", nameMajor.getText().toString());
+            // Retrieve scores as integers
+            int energyScore = 2;
+            int plantScore = 1;
+            int coScore = 2;
+            int financeScore = 3;// = Integer.parseInt(financeScoreEditText.getText().toString())
+            int rewardsScore = 2500;
+            // Put scores in the map
+            userUpdates.put("Energy Score: ", energyScore);
+            userUpdates.put("Plant Score: ", plantScore);
+            userUpdates.put("Co Score: ", coScore);
+            userUpdates.put("Finance Score: ", financeScore);
+            userUpdates.put("Reward Score: ", rewardsScore);
+
+            // Update the user data in a single call
+            dbRef.child("users").child(userId).updateChildren(userUpdates);
+
+        }
+
+
+
+  private void showUserIdInputDialog() {
+        // Create an EditText for user input
+        final EditText userIdInput = new EditText(getActivity());
+        userIdInput.setHint("Enter User ID");
+
+        // Create the AlertDialog
+        new AlertDialog.Builder(getActivity())
+                .setTitle("Input User ID")
+                .setMessage("Please enter your User ID:")
+                .setView(userIdInput) // Set the EditText as the dialog's view
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Get the user input
+                        String UserID = userIdInput.getText().toString();
+                        if (UserID.isEmpty()) {
+                           showUserIdInputDialog();
+                           Toast.makeText(getActivity(), "User ID cannot be empty", Toast.LENGTH_SHORT).show();
+                        }else{
+                            UserSession.getInstance(getContext()).setUserID(UserID);
+                            downloadFromDB(UserID);
+                        }
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Dismiss the dialog
+                        dialog.cancel();
+                    }
+                })
+                .show();
+    }

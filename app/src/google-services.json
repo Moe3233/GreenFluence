@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "155373880335",
+    "firebase_url": "https://attempt-31565-default-rtdb.firebaseio.com",
+    "project_id": "attempt-31565",
+    "storage_bucket": "attempt-31565.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:155373880335:android:8cb0a42abeed72a38f4f7a",
+        "android_client_info": {
+          "package_name": "com.example.attempt2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0gGHbyfdKjMmWxfXOs8g98JbxfQD5qOM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

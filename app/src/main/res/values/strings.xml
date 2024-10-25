@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Greenfluence</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Bookmarks</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_reward">Reward</string>
+    <string name="title_entry">Entry</string>
+    <string name="edit_profile">Edit Profile</string>
+</resources>

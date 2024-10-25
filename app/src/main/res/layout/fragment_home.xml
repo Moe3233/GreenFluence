@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E0E0E0"
+    tools:context=".ui.home.HomeFragment">
+
+    <!-- TextView with mixed colors and Raleway font -->
+    <TextView
+
+        android:fontFamily="sans-serif-black"
+        android:id="@+id/textView_Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="#005a9e"
+        android:text="Greenfluence">
+    </TextView>
+    <!-- TableLayout with 2-column colspan at top row and bottom left column with 4 rows -->
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toTopOf="@+id/Top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Title" />
+
+    <TableRow
+
+        android:id="@+id/Top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Title">
+
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:fontFamily="sans-serif-black"
+                    android:textColor="#005a9e"
+                    android:text="Name"
+                    android:textAlignment="textStart" />
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/borderss">
+
+                    <EditText
+                        android:id="@+id/editTextName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+
+                        android:fontFamily="sans-serif-black"
+                        android:inputType="text"
+                        android:text="Name"
+                        android:textSize="16sp"
+                        android:enabled="false"/>
+
+                </FrameLayout>
+
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="sans-serif-black"
+                    android:textColor="#005a9e"
+                    android:text="Student ID"
+                    android:textAlignment="textStart" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/borderss">
+
+                    <EditText
+                        android:id="@+id/editTextStudent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:capitalize="characters"
+
+                        android:fontFamily="sans-serif-black"
+                        android:inputType="text"
+                        android:text="Name"
+                        android:textSize="16sp" />
+
+                </FrameLayout>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:fontFamily="sans-serif-black"
+                    android:textColor="#005a9e"
+                    android:text="Enrolled Major"
+                    android:layout_span="2"
+                    android:textAlignment="textStart" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="138dp"
+                android:layout_height="match_parent">
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/borderss">
+
+                    <EditText
+                        android:id="@+id/editTextMajor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:fontFamily="sans-serif-black"
+
+                        android:inputType="text"
+                        android:text="Name"
+                        android:textSize="16sp"
+                        android:enabled="false"/>
+
+                </FrameLayout>
+            </TableRow>
+
+        </TableLayout>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/borderss"
+            android:src="@drawable/baseline_person_24"
+            tools:srcCompat="@tools:sample/avatars" />
+
+
+    </TableRow>
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginBottom="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toTopOf="@+id/Articles"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Top" />
+
+
+    <TableLayout
+        android:id="@+id/Stats"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="5dp"
+        android:divider="@color/black"
+        android:showDividers="middle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Top"
+        android:padding="10dp">
+
+        <TableRow> <!-- Energy Use -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_span="3"
+
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-black"
+                android:text="Energy Use"
+                android:textAlignment="center"
+                android:textColor="#005a9e" />
+        </TableRow>
+
+        <TableRow>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:background="@drawable/borderss">
+
+                <ImageView
+                    android:id="@+id/ener1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/energyoff" />
+
+                <ImageView
+                    android:id="@+id/ener2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/energyoff" />
+
+                <ImageView
+                    android:id="@+id/ener3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/energyoff" />
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow> <!-- Plantation Participation -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_span="3"
+
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-black"
+                android:text="Plantation Participation"
+                android:textAlignment="center"
+                android:textColor="#005a9e" />
+        </TableRow>
+
+        <TableRow>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:background="@drawable/borderss">
+
+                <ImageView
+                    android:id="@+id/tree1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/treeoff" />
+
+                <ImageView
+                    android:id="@+id/tree2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/treeoff" />
+<!--                    android:contentDescription="@null"-->
+
+                <ImageView
+                    android:id="@+id/tree3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/treeoff" />
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow> <!-- Co2 Emission -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_span="3"
+
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-black"
+                android:text="Co2 Emission"
+                android:textAlignment="center"
+                android:textColor="#005a9e" />
+        </TableRow>
+
+        <TableRow>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:background="@drawable/borderss">
+
+                <ImageView
+                    android:id="@+id/co1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/cloudoff" />
+
+                <ImageView
+                    android:id="@+id/co2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/cloudoff" />
+
+                <ImageView
+                    android:id="@+id/co3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/cloudoff" />
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow> <!-- Financial -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_span="3"
+
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-black"
+                android:text="Financial"
+                android:textAlignment="center"
+                android:textColor="#005a9e" />
+        </TableRow>
+
+        <TableRow>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:background="@drawable/borderss">
+
+                <ImageView
+                    android:id="@+id/cash1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/moneyoff" />
+
+                <ImageView
+                    android:id="@+id/cash2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/moneyoff" />
+
+                <ImageView
+                    android:id="@+id/cash3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/moneyoff" />
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow> <!-- RewardFragment -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_span="3"
+
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-black"
+                android:text="Rewards"
+                android:textAlignment="center"
+                android:textColor="#005a9e" />
+        </TableRow>
+
+    </TableLayout>
+
+
+    <!-- Articles -->
+
+
+    <LinearLayout
+        android:id="@+id/Articles"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Stats"
+        app:layout_constraintTop_toBottomOf="@+id/Top">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:fontFamily="sans-serif-black"
+            android:text="Articles"
+            android:textColor="#005a9e" />
+
+        <ScrollView
+            android:id="@+id/ScrollArticle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/articleContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <!-- This is where articles will be added dynamically -->
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
